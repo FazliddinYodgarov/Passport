@@ -34,18 +34,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private PasswordEncoder getPasswordEncoder() {
-//        return NoOpPasswordEncoder.getInstance();
-//        return new PasswordEncoder() {
-//            @Override
-//            public String encode(CharSequence rawPassword) {
-//                return rawPassword.toString();
-//            }
-//
-//            @Override
-//            public boolean matches(CharSequence rawPassword, String encodedPassword) {
-//                return rawPassword.toString().equals(encodedPassword);
-//            }
-//        };
+
         return new BCryptPasswordEncoder();
     }
 
@@ -78,25 +67,4 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 
 
-
-/*    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/", "/css/*", "/js/*").permitAll()
-                .antMatchers("/admin/*").hasRole("ADMIN")
-                .antMatchers("/profile/*").hasRole("PROFILE")
-                .and()
-                .formLogin()
-                .loginPage("/go_to_login")
-                .loginProcessingUrl("/login_do")
-                .defaultSuccessUrl("/").permitAll()
-                .and()
-                .logout()
-                .logoutSuccessUrl("/")
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
-                .and()
-                .exceptionHandling().accessDeniedHandler(accessDeniedHandler)
-                .and()
-                .authorizeRequests().anyRequest().authenticated();
-    }*/
 

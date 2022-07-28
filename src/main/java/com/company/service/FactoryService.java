@@ -60,15 +60,6 @@ public class FactoryService {
         return toDTO(optional.get());
     }
 
-//    public FactoryDTO update(Long id, FactoryDTO dto) {
-//
-//        Optional<FactoryEntity> optional = factoryRepository.findById(id);
-//
-//        FactoryEntity entity = optional.get();
-//        entity.setFactoryName(dto.getFactoryName());
-//        factoryRepository.save(entity);
-//        return toDTO(entity);
-//    }
     public ActionDTO update(Long id, FactoryDTO dto) {
 
         Optional<FactoryEntity> optional = factoryRepository.findById(id);
