@@ -137,7 +137,7 @@
                         <id>copy-dependencies</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>copy-dependencies</goal>
+                            <goal>compile</goal>
                         </goals>
                     </execution>
                     <execution>
