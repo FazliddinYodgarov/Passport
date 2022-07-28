@@ -1,1 +1,1 @@
-web: java -Dserver.port=1223 -jar target/demo-0.0.1-SNAPSHOT.jar
+web: java $JAVA_OPTS -jar target/dependency/jetty-runner.jar --port $2223 target/*.war
