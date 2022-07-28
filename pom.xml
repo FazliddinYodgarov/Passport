@@ -137,16 +137,10 @@
                         <id>copy-dependencies</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>testCompile</id>
-                        <phase>test-compile</phase>
-                        <goals>
                             <goal>testCompile</goal>
                         </goals>
                     </execution>
+                    
                 </executions>
             </plugin>
             <plugin>
