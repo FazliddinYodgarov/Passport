@@ -40,6 +40,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.requiresChannel()
+                .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+                .requiresSecure();
+
         http.authorizeRequests()
                 .antMatchers("/", "/auth/*", "/css/*", "/js/*").permitAll()
                 .antMatchers("/equipment/*").hasAnyRole("ADMIN", "USER")
@@ -62,6 +66,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+
 
 
 }
