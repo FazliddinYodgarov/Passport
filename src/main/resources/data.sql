@@ -1,0 +1,22 @@
+-- insert into profile(id,name,surname,password,email,role,created_date)
+-- values(uuid_generate_v4() ,'TOshmat','Toshatov','123','toshmat@mail.ru','ADMIN',now());
+--
+-- CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+--
+--
+-- insert into profile(id,name,surname,password,email,role,created_date)
+-- SELECT uuid_generate_v4() ,'TOshmat','Toshatov','123','toshmat@mail.ru','ADMIN',now()
+--     WHERE
+--     NOT EXISTS (
+--         SELECT id FROM profile WHERE   = 'Toshatov'
+--     );
+--
+--
+-- insert into profile(id,name,surname,password,email,role,created_date)
+-- values(uuid_generate_v4() ,'TOshmat','Toshatov','123','toshmat@mail.ru','ADMIN',now())
+--  on conflict (email) do nothing;
+
+-- Password and Login
+
+-- AdminLogin:AdminUNG
+-- AdminPassword:UNGAdmin2012

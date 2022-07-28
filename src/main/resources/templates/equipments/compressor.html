@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <main style="margin-top: 80px; margin-left: 300px">
+
+        <div th:fragment="compressor">
+            <form class="form  " action="#"
+                  th:action=" ${compressor.id == null} ? @{/equipment/create/compressor} : @{/equipment/update/compressor/{compressorId}(compressorId=${compressor.id})}"
+                  th:object="${compressor}" method="post">
+
+                <div class="form-floating fs-6 fw-bold  d-flex">
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group  mt-3 text-dark fw-bold">
+                                <label class="control-label col-sm-2" for="factory">Завод:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-select" id="factory" th:field="${compressor.factoryId}">
+                                        <th:block th:each="factory : ${factoryList}">
+                                            <option th:value="${factory.id}" th:text="${factory.factoryName}"
+                                                    th:selected="${compressor.factoryId==factory.id}"></option>
+                                        </th:block>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label col-sm-2" for="department">Цех:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.department}" id="department"
+                                           name="department">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label" for="plant">Установка</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.plant}" id="plant" name="plant">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="block">Блок:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.block}" id="block" name="block">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="technologicalPlace">Технологическое место :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.technologicalPlace}"
+                                           id="technologicalPlace" name="technologicalPlace">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="clacification">Классификация :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.clacification}"
+                                           id="clacification"
+                                           name="clacification">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="equipmentIdentification">Наименование оборудования :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.equipmentIdentification}"
+                                           id="equipmentIdentification" name="equipmentIdentification">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="serialNomer">Заводской номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.serialNomer}" id="serialNomer"
+                                           name="serialNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="registrationNomer">Регистрационный номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.registrationNomer}"
+                                           id="registrationNomer" name="registrationNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="inventoryNomer">Инвентаризационный номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.inventoryNomer}"
+                                           id="inventoryNomer" name="inventoryNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="type">Тип :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.type}" id="type" name="type">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="davlenie">Давление Рк, кгс/см2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.davlenie}" id="davlenie" name="davlenie">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="proizvoditelnost">При испытании на воздухе Производит. Q, м3/мин.
+                                    :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.proizvoditelnost}" id="proizvoditelnost" name="proizvoditelnost">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="naIspitaniiDavlenie">При испытании на воздухе. Давление Рк, кгс/см2
+                                    :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.naIspitaniiDavlenie}" id="naIspitaniiDavlenie" name="naIspitaniiDavlenie">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="potrebMownost">При испытании на воздухе. Потребляемая мощность N, кВт
+                                    :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.potrebMownost}" id="potrebMownost" name="potrebMownost">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="napryajenie">Напряжение Uраб, В :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.napryajenie}" id="napryajenie" name="napryajenie">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="castotaVraw">Частота вращения, об/мин :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.castotaVraw}" id="castotaVraw" name="castotaVraw">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tipPodwipnika">Тип подшипника :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.tipPodwipnika}" id="tipPodwipnika" name="tipPodwipnika">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tipuplot">Тип торцевого уплотнения :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.tipuplot}" id="tipuplot" name="tipuplot">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="perekacSreda">Перекачиваемая среда :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.perekacSreda}" id="perekacSreda" name="perekacSreda">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="godVipuska">Год выпуска :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.godVipuska}" id="godVipuska" name="godVipuska">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rascSrokSlujbi">Расчетный срок службы :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.rascSrokSlujbi}" id="rascSrokSlujbi" name="rascSrokSlujbi">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="izgotovitel">Изготовитель :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.izgotovitel}" id="izgotovitel" name="izgotovitel">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tipdvigatelya">Тип Двигателя :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.tipdvigatelya}"  id="tipdvigatelya" name="tipdvigatelya">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="markaDvigatelya">Марка Двигателя :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.markaDvigatelya}" id="markaDvigatelya" name="markaDvigatelya">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="mownostDvigatelya">Мощность Двигателя N, кВт :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.mownostDvigatelya}" id="mownostDvigatelya" name="mownostDvigatelya">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="castotaVraweniya">Частота вращения Двигателя, об/мин :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.castotaVraweniya}" id="castotaVraweniya" name="castotaVraweniya">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="podwipnikEldv">Подшипник эл.дв. :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${compressor.podwipnikEldv}" id="podwipnikEldv" name="podwipnikEldv">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group pb-3">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-info text-white mt-3"
+                                th:text="${compressor.id == null}? 'Добавить' : 'Обновить'">...
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+
+</div>
+
+
+
+</body>
+
+</html>
+
+

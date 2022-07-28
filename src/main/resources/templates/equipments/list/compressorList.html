@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/tableList.css}" href="../../../static/css/tableList.css">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/all.css}" href="../../../static/css/all.css">
+
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <div class="tabcontent ">
+        <div class=" " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" style="margin-left: 36%" id="staticBackdropLabel">Информация об оборудовании</h5>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered text-center">
+                            <tbody>
+                            <tr>
+                                <th scope="row" class="m-0">Завод</th>
+                                <td th:text="${compressor.factory.factoryName}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Цех</th>
+                                <td th:text="${compressor.department}"></td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">Установка</th>
+                                <td th:text="${compressor.plant}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Блок</th>
+                                <td th:text="${compressor.block}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Технологическое место</th>
+                                <td th:text="${compressor.technologicalPlace}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Классификация</th>
+                                <td th:text="${compressor.clacification}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Наименование оборудования</th>
+                                <td th:text="${compressor.equipmentIdentification}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Заводской номер</th>
+                                <td th:text="${compressor.serialNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Регистрационный номер</th>
+                                <td th:text="${compressor.registrationNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Инвентаризационный номер</th>
+                                <td th:text="${compressor.inventoryNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип</th>
+                                <td th:text="${compressor.type}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Давление Рк, кгс/см2</th>
+                                <td th:text="${compressor.davlenie}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">При испытании на воздухе Производит. Q, м3/мин.</th>
+                                <td th:text="${compressor.proizvoditelnost}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">При испытании на воздухе. Давление Рк, кгс/см2</th>
+                                <td th:text="${compressor.factory}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">При испытании на воздухе. Потребляемая мощность N, кВт</th>
+                                <td th:text="${compressor.potrebMownost}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Напряжение Uраб, В</th>
+                                <td th:text="${compressor.napryajenie}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Частота вращения, об/мин</th>
+                                <td th:text="${compressor.castotaVraw}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип подшипника</th>
+                                <td th:text="${compressor.tipPodwipnika}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип торцевого уплотнения</th>
+                                <td th:text="${compressor.tipuplot}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Перекачиваемая среда</th>
+                                <td th:text="${compressor.perekacSreda}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Год выпуска</th>
+                                <td th:text="${compressor.godVipuska}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расчетный срок службы</th>
+                                <td th:text="${compressor.rascSrokSlujbi}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Изготовитель</th>
+                                <td th:text="${compressor.izgotovitel}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип Двигателя</th>
+                                <td th:text="${compressor.tipdvigatelya}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Марка Двигателя</th>
+                                <td th:text="${compressor.markaDvigatelya}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Мощность Двигателя N, кВт</th>
+                                <td th:text="${compressor.mownostDvigatelya}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Частота вращения Двигателя, об/мин</th>
+                                <td th:text="${compressor.castotaVraweniya}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Подшипник эл.дв.</th>
+                                <td th:text="${compressor.podwipnikEldv}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="modal-footer px-2" >
+                            <button type="button" class="btn btn-info text-white text-uppercase text-decoration-none">
+                                <a class="text-decoration-none text-white" th:href="${'/equipment/go-to-update/compressor/' + {compressor.id} + '/'}"><i class="fa-solid fa-pen-to-square"></i> Изменить</a>
+                            </button>
+                            <button sec:authorize="hasRole('ROLE_ADMIN')" type="button" class="btn btn-danger text-uppercase text-decoration-none ">
+                                <a class="text-decoration-none text-white" th:href="@{/equipment/delete/compressor/{compressorId}(compressorId=${compressor.id})}"><i class="fa-solid fa-trash"></i> Удалить </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="../../../static/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
+
+

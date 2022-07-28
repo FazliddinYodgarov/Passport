@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/tableList.css}" href="../../../static/css/tableList.css">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/all.css}" href="../../../static/css/all.css">
+
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <div class="tabcontent ">
+        <div class=" " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" style="margin-left: 36%" id="staticBackdropLabel">Информация об оборудовании</h5>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th scope="row" class="m-0">Завод</th>
+                                <td th:text="${gpa.factory.factoryName}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Цех</th>
+                                <td th:text="${gpa.department}"></td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">Установка</th>
+                                <td th:text="${gpa.plant}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Блок</th>
+                                <td th:text="${gpa.block}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Технологическое место</th>
+                                <td th:text="${gpa.technologicalPlace}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Классификация</th>
+                                <td th:text="${gpa.clacification}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Наименование оборудования</th>
+                                <td th:text="${gpa.equipmentIdentification}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Заводской номер</th>
+                                <td th:text="${gpa.serialNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Регистрационный номер</th>
+                                <td th:text="${gpa.registrationNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Инвентаризационный номер</th>
+                                <td th:text="${gpa.inventoryNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип</th>
+                                <td th:text="${gpa.type}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">ГПА(ТКА,КУ) №</th>
+                                <td th:text="${gpa.GPA}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Модель ГПА</th>
+                                <td th:text="${gpa.model}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Год выпуска ГПА</th>
+                                <td th:text="${gpa.godVipuska}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Модель Компрессора</th>
+                                <td th:text="${gpa.modelKomp}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расчетное давление Компрессора Ррасч, кгс/см2</th>
+                                <td th:text="${gpa.rascDavlenieKomp}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Рабочее давление Компрессора Рраб, кгс/см2</th>
+                                <td th:text="${gpa.rabDavlenie}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Подача газа Q, м3/мин</th>
+                                <td th:text="${gpa.podaca}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Мощность компрессора N, МВт</th>
+                                <td th:text="${gpa.mownostKomp}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Частота вращения, об/мин</th>
+                                <td th:text="${gpa.castotaDivl}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Кол-во Рабочего колеса</th>
+                                <td th:text="${gpa.kolVoKolesa}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Материал Рабочего колеса</th>
+                                <td th:text="${gpa.mayerialKolesa}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Вид Торцевого уплотнения</th>
+                                <td th:text="${gpa.vidUplot}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Марка Торцевого уплотнения</th>
+                                <td th:text="${gpa.markaUplot}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Изготовитель</th>
+                                <td th:text="${gpa.izgotov}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Модель Редуктора</th>
+                                <td th:text="${gpa.modelRed}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Модель Двигателя</th>
+                                <td th:text="${gpa.modelDvig}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Мощность Двигателя N, МВт</th>
+                                <td th:text="${gpa.mownostDv}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Частота вращения, об/мин2</th>
+                                <td th:text="${gpa.castotaComp}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расход топливного газа, м3/час</th>
+                                <td th:text="${gpa.rasxod}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расход воздуха, м3/час</th>
+                                <td th:text="${gpa.rasxodvozd}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Изготовитель 3</th>
+                                <td th:text="${gpa.izg3}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Вид Масла</th>
+                                <td th:text="${gpa.vidMasla}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Плотность Масла</th>
+                                <td th:text="${gpa.plotnost}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Объем масляного бака компрессора, литр</th>
+                                <td th:text="${gpa.obyemBakaKomp}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Объем масляного бака двигателя, литр</th>
+                                <td th:text="${gpa.obyemBakaDvig}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Вид масляного фильтра</th>
+                                <td th:text="${gpa.vidFiltra}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Число масляного фильтра</th>
+                                <td th:text="${gpa.cisloFiltra}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Модель Противопожарной системы</th>
+                                <td th:text="${gpa.modelpojSistemi}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Вид средства пожаротушения</th>
+                                <td th:text="${gpa.vidPoj}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Кол-во баллонов Углекислого газа</th>
+                                <td th:text="${gpa.kolVoballonov}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="modal-footer px-2" >
+                            <button type="button" class="btn btn-info text-white text-uppercase ">
+                                <a class="text-decoration-none text-white" th:href="${'/equipment/go-to-update/gpa' + {gpa.id} + '/'}"><i class="fa-solid fa-pen-to-square"></i> Изменить</a>
+                            </button>
+                            <button sec:authorize="hasRole('ROLE_ADMIN')" type="button" class="btn btn-danger text-uppercase ">
+                                <a class="text-decoration-none text-white" th:href="@{/equipment/delete/gpa/{gpaId}(gpaId=${gpa.id})}"><i class="fa-solid fa-trash"></i> Удалить </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="../../../static/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
+
+

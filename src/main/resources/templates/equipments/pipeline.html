@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <main style="margin-top: 80px; margin-left: 300px">
+
+        <div th:fragment="pipeline">
+            <form class="form  " action="#"
+                  th:action=" ${pipeline.id == null} ? @{/equipment/create/pipeline} : @{/equipment/update/pipeline/{pipelineId}(pipelineId=${pipeline.id})}"
+                  th:object="${pipeline}" method="post">
+
+                <div class="form-floating fs-6 fw-bold  d-flex">
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group  mt-3 text-dark fw-bold">
+                                <label class="control-label col-sm-2" for="factory">Завод:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-select" id="factory" th:field="${pipeline.factoryId}">
+                                        <th:block th:each="factory : ${factoryList}">
+                                            <option th:value="${factory.id}" th:text="${factory.factoryName}"
+                                                    th:selected="${pipeline.factoryId==factory.id}"></option>
+                                        </th:block>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label col-sm-2" for="department">Цех:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.department}" id="department"
+                                           name="department">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label" for="plant">Установка</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.plant}" id="plant" name="plant">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="block">Блок:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.block}" id="block" name="block">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="technologicalPlace">Технологическое место :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.technologicalPlace}"
+                                           id="technologicalPlace" name="technologicalPlace">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="clacification">Классификация :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.clacification}"
+                                           id="clacification"
+                                           name="clacification">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="equipmentIdentification">Наименование оборудования :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.equipmentIdentification}"
+                                           id="equipmentIdentification" name="equipmentIdentification">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="serialNomer">Заводской номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.serialNomer}" id="serialNomer"
+                                           name="serialNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="registrationNomer">Регистрационный номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.registrationNomer}"
+                                           id="registrationNomer" name="registrationNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="inventoryNomer">Инвентаризационный номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.inventoryNomer}"
+                                           id="inventoryNomer" name="inventoryNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="type">Тип :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.type}" id="type" name="type">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="naznacenieTruboprovoda">Назначение трубопровода :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.naznacenieTruboprovoda}" id="naznacenieTruboprovoda" name="naznacenieTruboprovoda">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rabSreda">Рабочая среда :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.rabSreda}" id="rabSreda" name="rabSreda">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tempStenki">Температура стенки, °С :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.tempStenki}" id="tempStenki" name="tempStenki">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="davlenie">Давление, кгс/см2 (МПа) :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.davlenie}" id="davlenie" name="davlenie">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="naimUchastkovPoSxeme">Наименование участков или обозначение по схеме
+                                    :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.naimUchastkovPoSxeme}" id="naimUchastkovPoSxeme" name="naimUchastkovPoSxeme">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="narDiametrTrubi">Наружный диаметр трубы, мм :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pipeline.narDiametrTrubi}" id="narDiametrTrubi" name="narDiametrTrubi">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="tolwinaStenkiTrubi">Толщина стенки трубы, мм :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${pipeline.tolwinaStenkiTrubi}" id="tolwinaStenkiTrubi" name="tolwinaStenkiTrubi">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="dlinaUcastkaTrub">Длина участка трубопровода, м :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${pipeline.dlinaUcastkaTrub}" id="dlinaUcastkaTrub" name="dlinaUcastkaTrub">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="materialTrub">Материал труб :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${pipeline.materialTrub}" id="materialTrub" name="materialTrub">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="dataVvoda">Дата ввода в эксплуатацию :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${pipeline.dataVvoda}" id="dataVvoda" name="dataVvoda">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="rascSrokSlujbi">Расчетный срок службы трубопровода, лет :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${pipeline.rascSrokSlujbi}" id="rascSrokSlujbi" name="rascSrokSlujbi">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="remont">Последний проведения ремонта :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${pipeline.remont}" id="remont" name="remont">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="zavodIzgotovitel">Завод изготовитель :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${pipeline.zavodIzgotovitel}" id="zavodIzgotovitel" name="zavodIzgotovitel">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="tipIzolyacii">Тип изоляции :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"th:field="${pipeline.tipIzolyacii}" id="tipIzolyacii" name="tipIzolyacii">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="form-group pb-3">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-info text-white mt-3"
+                                th:text="${pipeline.id == null}? 'Добавить' : 'Обновить'">...
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+</div>
+
+
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <main style="margin-top: 80px; margin-left: 300px">
+
+        <div th:fragment="columns">
+            <form class="form  " action="#"
+                  th:action=" ${columns.id == null} ? @{/equipment/create/columns} : @{/equipment/update/columns/{columnsId}(columnsId=${columns.id})}"
+                  th:object="${columns}" method="post">
+
+                <div class="form-floating fs-6 fw-bold  d-flex">
+                    <div class="col-md-6">
+                        <div class="form-group  mt-3 text-dark fw-bold">
+                            <label class="control-label col-sm-2" for="factory">Завод:</label>
+                            <div class="col-sm-10">
+                                <select class="form-control form-select" id="factory" th:field="${columns.factoryId}">
+                                    <th:block th:each="factory : ${factoryList}">
+                                        <option th:value="${factory.id}" th:text="${factory.factoryName}"
+                                                th:selected="${columns.factoryId==factory.id}"></option>
+                                    </th:block>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label col-sm-2" for="department">Цех:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.department}" id="department"
+                                       name="department">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label" for="plant">Установка</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.plant}" id="plant" name="plant">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="block">Блок:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.block}" id="block" name="block">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="technologicalPlace">Технологическое место :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.technologicalPlace}"
+                                       id="technologicalPlace" name="technologicalPlace">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="clacification">Классификация :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.clacification}" id="clacification"
+                                       name="clacification">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="equipmentIdentification">Наименование оборудования :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.equipmentIdentification}"
+                                       id="equipmentIdentification" name="equipmentIdentification">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="serialNomer">Заводской номер :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.serialNomer}" id="serialNomer"
+                                       name="serialNomer">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="registrationNomer">Регистрационный номер :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.registrationNomer}"
+                                       id="registrationNomer" name="registrationNomer">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="inventoryNomer">Инвентаризационный номер :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.inventoryNomer}"
+                                       id="inventoryNomer" name="inventoryNomer">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="type">Тип :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.type}" id="type" name="type">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="obyem">Объем, м3\t :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.obyem}" id="obyem" name="obyem">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="diamKorpusaVn">Диаметр корпуса внутренний (нижняя часть) Dвнутр, мм
+                                :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.diamKorpusaVn}" id="diamKorpusaVn" name="diamKorpusaVn">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="diamKorpusaVn2">Диаметр корпуса внутренний (верхняя часть) Dвнутр, мм
+                                :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.diamKorpusaVn2}" id="diamKorpusaVn2" name="diamKorpusaVn2">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="tolwinaSt1">Толщина стенки корпуса S1, мм :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.tolwinaSt1}" id="tolwinaSt1" name="tolwinaSt1">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="tolwinaSt2">Толщина стенки корпуса S2, мм:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.tolwinaSt2}" id="tolwinaSt2" name="tolwinaSt2">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="visota">Высота H, мм :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.visota}" id="visota" name="visota">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="tipUstroystva">Тип внутренного устройства :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.tipUstroystva}" id="tipUstroystva" name="tipUstroystva">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="rabDavlenie">Рабочее давление Рраб, кгс/см2 :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.rabDavlenie}" id="rabDavlenie" name="rabDavlenie">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="rascDavlenie">Расчетное давление Ррас, кгс/см2 :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.rascDavlenie}" id="rascDavlenie" name="rascDavlenie">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="rabTemp">Раб. тем-ра среды, °С:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.rabTemp}" id="rabTemp" name="rabTemp">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="rascTemp">Расч. тем-ра,°С:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${columns.rascTemp}" id="rascTemp" name="rascTemp">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="naimSredi">Наименование среды:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.naimSredi}" id="naimSredi" name="naimSredi">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="massaApp">Масса аппарата, кг :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.massaApp}" id="massaApp" name="massaApp">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="godVipuska">Год выпуска :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.godVipuska}" id="godVipuska" name="godVipuska">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="dataVvoda">Дата ввода в эксплуатацию :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.dataVvoda}" id="dataVvoda" name="dataVvoda">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rascSrok">Расчетный срок службы :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.rascSrok}" id="rascSrok" name="rascSrok">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="markaKorp">Марка Материала Корпуса :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.markaKorp}" id="markaKorp" name="markaKorp">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="markaVnUst">Марка Материала Внутреннего устройства :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.markaVnUst}" id="markaVnUst" name="markaVnUst">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="deflegmator">Дефлегматор :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.deflegmator}" id="deflegmator" name="deflegmator">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tolwinaDefl">Толщина стенки труб Sтр, мм :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.tolwinaDefl}" id="tolwinaDefl" name="tolwinaDefl">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="kolVoTrub">Количество Труб :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.kolVoTrub}" id="kolVoTrub" name="kolVoTrub">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="poverTeploob">Поверхность теплообмена, м2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.poverTeploob}" id="poverTeploob" name="poverTeploob">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rabDavlenie1">Рабочее давление Pраб, кгс/см2 2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.rabDavlenie1}"  id="rabDavlenie1" name="rabDavlenie1">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rascDavlenie2">Расчетное давление Pрас, кгс/см2 3 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.rascDavlenie2}" id="rascDavlenie2" name="rascDavlenie2">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rabTemp1">Рабочая тем-ра среды (макс), °С 4 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.rabTemp1}" id="rabTemp1" name="rabTemp1">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rascTemp2">Расчетная тем-ра, °С 5 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.rascTemp2}" id="rascTemp2" name="rascTemp2">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="markaDef">Марка материала Дефлегматора :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.markaDef}" id="markaDef" name="markaDef">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="izgotov">Изготовитель :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.izgotov}" id="izgotov" name="izgotov">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="dataProvTexOsmotra">Дата проведения технического осмотра :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.dataProvTexOsmotra}" id="dataProvTexOsmotra" name="dataProvTexOsmotra">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="poslisp">Дата проведения последних испытаний :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.poslisp}" id="poslisp" name="poslisp">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="texOsmotr">Дата следующего технического осмотра :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.texOsmotr}" id="texOsmotr" name="texOsmotr">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="sledisp">Дата проведения следующих испытаний :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${columns.sledisp}" id="sledisp" name="sledisp">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group pb-3">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-info text-white mt-3" th:text="${columns.id == null}? 'Добавить' : 'Обновить'">
+                            ...
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+</div>
+
+
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <main style="margin-top: 80px; margin-left: 300px">
+
+    <div th:fragment="separator" >
+        <form class="form  " action="#"
+              th:action=" ${separator.id == null} ? @{/equipment/create/separator} : @{/equipment/update/separator/{separatorId}(separatorId=${separator.id})}"
+              th:object="${separator}" method="post">
+
+            <div class="form-floating fs-6 fw-bold  d-flex">
+                <div class="col-md-6">
+                    <div class="contact-form">
+                        <div class="form-group  mt-3 text-dark fw-bold">
+                            <label class="control-label col-sm-2" for="factory">Завод:</label>
+                            <div class="col-sm-10">
+                                <select class="form-control form-select" id="factory" th:field="${separator.factoryId}">
+                                    <th:block th:each="factory : ${factoryList}">
+                                        <option th:value="${factory.id}" th:text="${factory.factoryName}"
+                                                th:selected="${separator.factoryId==factory.id}"></option>
+                                    </th:block>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label col-sm-2"  for="department">Цех:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.department}" id="department" name="department">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label"  for="plant">Установка</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.plant}" id="plant" name="plant">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="block">Блок:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.block}" id="block" name="block">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label "  for="technologicalPlace">Технологическое место :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.technologicalPlace}" id="technologicalPlace" name="technologicalPlace">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="clacification">Классификация :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.clacification}" id="clacification" name="clacification">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="equipmentIdentification">Наименование оборудования :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.equipmentIdentification}" id="equipmentIdentification" name="equipmentIdentification">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label "  for="serialNomer">Заводской номер :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.serialNomer}" id="serialNomer" name="serialNomer">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="registrationNomer">Регистрационный номер :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.registrationNomer}" id="registrationNomer" name="registrationNomer">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="inventoryNomer">Инвентаризационный номер :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.inventoryNomer}" id="inventoryNomer" name="inventoryNomer">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="type">Тип :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.type}" id="type" name="type">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="capacity">Объем, м3\t :</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" th:field="${separator.capacity}" id="capacity" name="capacity">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="massa">Масса аппарата, кг :</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" th:field="${separator.massa}" id="massa" name="massa">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="vnutrenniyDiametr">Внутренний диаметр Корпуса Dвнутр, мм
+                                :</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" th:field="${separator.vnutrenniyDiametr}" id="vnutrenniyDiametr" name="vnutrenniyDiametr">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="dlinaKorpusa">ВДлина Корпуса, мм :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.dlinaKorpusa}"  id="dlinaKorpusa" name="dlinaKorpusa">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="tolshinaStenkiKorpusa">Толщина стенки корпуса Sк, мм:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.tolshinaStenkiKorpusa}" id="tolshinaStenkiKorpusa" name="tolshinaStenkiKorpusa">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="rabDavlenieKorp">Рабочее давление Корпуса Рраб, кгс/см2
+                                :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.rabDavlenieKorp}" id="rabDavlenieKorp" name="rabDavlenieKorp">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label "  for="rascDavlenieKorp">Расчетное давление Корпуса Ррас,
+                                кгс/см2:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.rascDavlenieKorp}" id="rascDavlenieKorp" name="rascDavlenieKorp">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="rabTempSredi">Раб. тем-ра среды Корпуса, °С:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.rabTempSredi}" id="rabTempSredi" name="rabTempSredi">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-form">
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="rascTemp">Расч. тем-ра Корпуса,°С:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.rascTemp}" id="rascTemp" name="rascTemp">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="naimenovanieSredi">Наименование среды:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.naimenovanieSredi}" id="naimenovanieSredi" name="naimenovanieSredi">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="rabDavleniePodog">Рабочее давление Подогревателя Рраб, кгс/см2
+                                :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.rabDavleniePodog}" id="rabDavleniePodog" name="rabDavleniePodog">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="rascDavleniepPodog">Расчетное давление Подогревателя Ррас, кгс/см2
+                                :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.rascDavleniepPodog}" id="rascDavleniepPodog" name="rascDavleniepPodog">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="rabTempPodog">Раб. тем-ра среды Подогревателя, °С :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.rabTempPodog}" id="rabTempPodog" name="rabTempPodog">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="rascTempPodog">Расч. тем-ра среды Подогревателя, °С :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.rascTempPodog}" id="rascTempPodog" name="rascTempPodog">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="naimSrediPodog">Наименование среды Подогревателя :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.naimSrediPodog}" id="naimSrediPodog" name="naimSrediPodog">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="poverxTeploobPodog">Поверхность теплообмена подогревателя, м2
+                                :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.poverxTeploobPodog}" id="poverxTeploobPodog" name="poverxTeploobPodog">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="godVipuska">Год выпуска :</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" th:field="${separator.godVipuska}" id="godVipuska" name="godVipuska">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="dataVvoda">Дата ввода в эксплуатацию :</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" th:field="${separator.dataVvoda}" id="dataVvoda" name="dataVvoda">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="rascSrok">Расчетный срок службы :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.rascSrok}" id="rascSrok" name="rascSrok">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="regNumber">Регистрационный номер (Госкомтехнадзор)
+                                :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.regNumber}" id="regNumber" name="regNumber">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="materialKorpusa">Материал корпуса :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.materialKorpusa}" id="materialKorpusa" name="materialKorpusa">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="materialPodog">Материал подогревателя :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.materialPodog}" id="materialPodog" name="materialPodog">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="izgotovitel">Изготовитель :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.izgotovitel}" id="izgotovitel" name="izgotovitel">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="dataProvTexOsmotra">Дата проведения технического осмотра :</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" th:field="${separator.dataProvTexOsmotra}" id="dataProvTexOsmotra" name="dataProvTexOsmotra">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="posIsp">Дата проведения последних испытаний :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.posIsp}" id="posIsp" name="posIsp">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="texOsmotr">Дата следующего технического осмотра :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.texOsmotr}" id="texOsmotr" name="texOsmotr">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="sledIsp">Дата проведения следующих испытаний:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${separator.sledIsp}"  id="sledIsp" name="sledIsp">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group pb-3">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-info text-white mt-3" th:text="${separator.id == null}? 'Добавить' : 'Обновить'">...</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+<div>
+
+</div>
+
+
+
+</body>
+
+</html>
+
+

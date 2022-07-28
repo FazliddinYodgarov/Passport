@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <main style="margin-top: 80px; margin-left: 300px">
+
+        <div th:fragment="GPA">
+            <form class="form  " action="#"
+                  th:action=" ${gpa.id == null} ? @{/equipment/create/gpa} : @{/equipment/update/gpa/{gpaId}(gpaId=${gpa.id})}"
+                  th:object="${gpa}" method="post">
+
+                <div class="form-floating fs-6 fw-bold  d-flex">
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group  mt-3 text-dark fw-bold">
+                                <label class="control-label col-sm-2" for="factory">Завод:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-select" id="factory" th:field="${gpa.factoryId}">
+                                        <th:block th:each="factory : ${factoryList}">
+                                            <option th:value="${factory.id}" th:text="${factory.factoryName}"
+                                                    th:selected="${gpa.factoryId==factory.id}"></option>
+                                        </th:block>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label col-sm-2" for="department">Цех:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.department}" id="department"
+                                           name="department">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label" for="plant">Установка</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.plant}" id="plant" name="plant">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="block">Блок:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.block}" id="block" name="block">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="technologicalPlace">Технологическое место :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.technologicalPlace}"
+                                           id="technologicalPlace" name="technologicalPlace">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="clacification">Классификация :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.clacification}"
+                                           id="clacification"
+                                           name="clacification">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="equipmentIdentification">Наименование оборудования :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.equipmentIdentification}"
+                                           id="equipmentIdentification" name="equipmentIdentification">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="serialNomer">Заводской номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.serialNomer}" id="serialNomer"
+                                           name="serialNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="registrationNomer">Регистрационный номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.registrationNomer}"
+                                           id="registrationNomer" name="registrationNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="inventoryNomer">Инвентаризационный номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.inventoryNomer}"
+                                           id="inventoryNomer" name="inventoryNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="type">Тип :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.type}" id="type" name="type">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="GPA">ГПА(ТКА,КУ) № :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.GPA}" id="GPA" name="GPA">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="model">Модель ГПА :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.model}" id="model" name="model">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="godVipuska">Год выпуска ГПА :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.godVipuska}" id="godVipuska" name="godVipuska">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="modelKomp">Модель Компрессора :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.modelKomp}" id="modelKomp" name="modelKomp">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rascDavlenieKomp">Расчетное давление Компрессора Ррасч, кгс/см2
+                                    :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.rascDavlenieKomp}" id="rascDavlenieKomp" name="rascDavlenieKomp">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rabDavlenie">Рабочее давление Компрессора Рраб, кгс/см2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.rabDavlenie}" id="rabDavlenie" name="rabDavlenie">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="podaca">Подача газа Q, м3/мин :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.podaca}" id="podaca" name="podaca">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="mownostKomp">Мощность компрессора N, МВт :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.mownostKomp}" id="mownostKomp" name="mownostKomp">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="castotaDivl">Частота вращения, об/мин :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.castotaDivl}" id="castotaDivl" name="castotaDivl">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="kolVoKolesa">Кол-во Рабочего колеса :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.kolVoKolesa}" id="kolVoKolesa" name="kolVoKolesa">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="mayerialKolesa">Материал Рабочего колеса :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.mayerialKolesa}" id="mayerialKolesa" name="mayerialKolesa">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="vidUplot">Вид Торцевого уплотнения :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.vidUplot}" id="vidUplot" name="vidUplot">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="markaUplot">Марка Торцевого уплотнения :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.markaUplot}" id="markaUplot" name="markaUplot">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="izgotov">Изготовитель :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.izgotov}" id="izgotov" name="izgotov">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="modelRed">Модель Редуктора :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.modelRed}" id="modelRed" name="modelRed">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="modelDvig">Модель Двигателя :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.modelDvig}" id="modelDvig" name="modelDvig">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="mownostDv">Мощность Двигателя N, МВт :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.mownostDv}" id="mownostDv" name="mownostDv">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="castotaComp">Частота вращения, об/мин2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.castotaComp}" id="castotaComp" name="castotaComp">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rasxod">Расход топливного газа, м3/час :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.rasxod}" id="rasxod" name="rasxod">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rasxodvozd">Расход воздуха, м3/час :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.rasxodvozd}" id="rasxodvozd" name="rasxodvozd">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="izg3">Изготовитель3 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.izg3}" id="izg3" name="izg3">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="vidMasla">Вид Масла :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.vidMasla}" id="vidMasla" name="vidMasla">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="plotnost">Плотность Масла :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.plotnost}" id="plotnost" name="plotnost">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="obyemBakaKomp">Объем масляного бака компрессора, литр :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.obyemBakaKomp}" id="obyemBakaKomp" name="obyemBakaKomp">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="obyemBakaDvig">Объем масляного бака двигателя, литр :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.obyemBakaDvig}" id="obyemBakaDvig" name="obyemBakaDvig">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="vidFiltra">Вид масляного фильтра :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.vidFiltra}" id="vidFiltra" name="vidFiltra">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="cisloFiltra">Число масляного фильтра :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.cisloFiltra}" id="cisloFiltra" name="cisloFiltra">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="modelpojSistemi">Модель Противопожарной системы :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.modelpojSistemi}" id="modelpojSistemi" name="modelpojSistemi">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="vidPoj">Вид средства пожаротушения :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.vidPoj}" id="vidPoj" name="vidPoj">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="kolVoballonov">Кол-во баллонов Углекислого газа :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${gpa.kolVoballonov}" id="kolVoballonov" name="kolVoballonov">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group pb-3">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-info text-white mt-3"
+                                th:text="${gpa.id == null}? 'Добавить' : 'Обновить'">...
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+
+</div>
+
+
+
+</body>
+
+</html>
+
+

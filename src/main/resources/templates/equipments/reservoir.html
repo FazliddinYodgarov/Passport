@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <main style="margin-top: 80px; margin-left: 300px">
+
+        <div th:fragment="reservoir">
+            <form class="form  " action="#"
+                  th:action=" ${reservoir.id == null} ? @{/equipment/create/reservoir} : @{/equipment/update/reservoir/{reservoirId}(reservoirId=${reservoir.id})}"
+                  th:object="${reservoir}" method="post">
+
+                <div class="form-floating fs-6 fw-bold  d-flex">
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group  mt-3 text-dark fw-bold">
+                                <label class="control-label col-sm-2" for="factory">Завод:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-select" id="factory" th:field="${reservoir.factoryId}">
+                                        <th:block th:each="factory : ${factoryList}">
+                                            <option th:value="${factory.id}" th:text="${factory.factoryName}"
+                                                    th:selected="${reservoir.factoryId==factory.id}"></option>
+                                        </th:block>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label col-sm-2" for="department">Цех:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.department}" id="department"
+                                           name="department">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label" for="plant">Установка</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.plant}" id="plant" name="plant">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="block">Блок:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.block}" id="block" name="block">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="technologicalPlace">Технологическое место :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.technologicalPlace}"
+                                           id="technologicalPlace" name="technologicalPlace">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="clacification">Классификация :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.clacification}"
+                                           id="clacification"
+                                           name="clacification">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="equipmentIdentification">Наименование оборудования :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.equipmentIdentification}"
+                                           id="equipmentIdentification" name="equipmentIdentification">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="serialNomer">Заводской номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.serialNomer}" id="serialNomer"
+                                           name="serialNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="registrationNomer">Регистрационный номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.registrationNomer}"
+                                           id="registrationNomer" name="registrationNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="inventoryNomer">Инвентаризационный номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.inventoryNomer}"
+                                           id="inventoryNomer" name="inventoryNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="type">Тип :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.type}" id="type" name="type">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="obyem">Объем, м3\t :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.obyem}" id="obyem" name="obyem">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="narDiametr">Наружный диаметр Dнаруж, мм :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.narDiametr}" id="narDiametr" name="narDiametr">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tolwinaStenki1">Толщина стенки корпуса S1, мм :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.tolwinaStenki1}" id="tolwinaStenki1" name="tolwinaStenki1">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tolwinaStenki2">Толщина стенки корпуса S2, мм :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.tolwinaStenki2}" id="tolwinaStenki2" name="tolwinaStenki2">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="dlina">Длина, мм :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.dlina}" id="dlina" name="dlina">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="visota">Высота, мм :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.visota}" id="visota" name="visota">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rabDavlenie">Рабочее давление Pраб, кгс/см2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.rabDavlenie}" id="rabDavlenie" name="rabDavlenie">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rascDavlenie">Расчетное давление Pрас, кгс/см2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.rascDavlenie}" id="rascDavlenie" name="rascDavlenie">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="lname">Раб. температура, °C :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.rabTemp}" id="lname" name="lname">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rabTemp">Расч. температура, °C :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.rascTemp}" id="rabTemp" name="rabTemp">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="naimSredi">Наименование среды :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.naimSredi}" id="naimSredi" name="naimSredi">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="godVipuska">Год выпуска :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.godVipuska}" id="godVipuska" name="godVipuska">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="dataVvoda">Дата ввода в эксплуатацию :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"  th:field="${reservoir.dataVvoda}" id="dataVvoda" name="dataVvoda">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rascSrok">Расчетный срок службы :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.rascSrok}" id="rascSrok" name="rascSrok">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="matKorpusa">Материал корпуса :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.matKorpusa}" id="matKorpusa" name="matKorpusa">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="izgotovitel">Изготовитель :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.izgotovitel}" id="izgotovitel" name="izgotovitel">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="infOsvidel">Информация об Осведетельствовании :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.infOsvidel}" id="infOsvidel" name="infOsvidel">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="dataProvTexOsmotra">Дата проведения технического осмотра :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.dataProvTexOsmotra}" id="dataProvTexOsmotra" name="dataProvTexOsmotra">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="poslIsp">Дата проведения последних испытаний :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.poslIsp}" id="poslIsp" name="poslIsp">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="texOsmotr">Дата следующего технического осмотра) :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.texOsmotr}" id="texOsmotr" name="texOsmotr">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="ledIsp">Дата проведения следующих испытаний :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${reservoir.ledIsp}" id="ledIsp" name="ledIsp">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group pb-3">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-info text-white mt-3"
+                                th:text="${reservoir.id == null}?'Добавить' : 'Обновить'">...
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+
+</div>
+
+
+
+</body>
+
+</html>
+
+

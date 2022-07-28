@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <main style="margin-top: 80px; margin-left: 300px">
+
+        <div th:fragment="AVO">
+            <form class="form  " action="#"
+                  th:action=" ${avo.id == null} ? @{/equipment/create/avo} : @{/equipment/update/avo/{avoId}(avoId=${avo.id})}"
+                  th:object="${avo}" method="post">
+
+                <div class="form-floating fs-6 fw-bold d-flex">
+                    <div class="col-md-6">
+                        <div class="form-group  mt-3 text-dark fw-bold">
+                            <label class="control-label col-sm-2" for="factory">Завод:</label>
+                            <div class="col-sm-10">
+                                <select class="form-control form-select" id="factory" th:field="${avo.factoryId}">
+                                    <th:block th:each="factory : ${factoryList}">
+                                        <option th:value="${factory.id}" th:text="${factory.factoryName}"
+                                                th:selected="${avo.factoryId==factory.id}"></option>
+                                    </th:block>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label col-sm-2" for="department">Цех:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.department}" id="department"
+                                       name="department">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label" for="plant">Установка</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.plant}" id="plant" name="plant">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="block">Блок:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.block}" id="block" name="block">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="technologicalPlace">Технологическое место :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.technologicalPlace}"
+                                       id="technologicalPlace" name="technologicalPlace">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="clacification">Классификация :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.clacification}" id="clacification"
+                                       name="clacification">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="equipmentIdentification">Наименование оборудования :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.equipmentIdentification}"
+                                       id="equipmentIdentification" name="equipmentIdentification">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="serialNomer">Заводской номер :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.serialNomer}" id="serialNomer"
+                                       name="serialNomer">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="registrationNomer">Регистрационный номер :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.registrationNomer}"
+                                       id="registrationNomer" name="registrationNomer">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="inventoryNomer">Инвентаризационный номер :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.inventoryNomer}"
+                                       id="inventoryNomer" name="inventoryNomer">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="type">Тип :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.type}" id="type" name="type">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="wifr">Условное обозначение (шифр) :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.wifr}" id="wifr" name="wifr">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="cisloXodov">Число ходов :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.cisloXodov}" id="cisloXodov" name="cisloXodov">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="kolVoSeksiy">Количество секций :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.kolVoSeksiy}" id="kolVoSeksiy" name="kolVoSeksiy">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="control-label " for="poverTeplo">Поверхность теплообмена, м2 :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="${avo.poverTeplo}" id="poverTeplo" name="poverTeplo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rabDavlenie">Рабочее давление Pраб, кгс/см2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.rabDavlenie}" id="rabDavlenie" name="rabDavlenie">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rascDavlenie">Расчетное давление Ррас, кгс/см2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.rascDavlenie}" id="rascDavlenie" name="rascDavlenie">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rabTempSredi">Рабочая тем-ра среды, °С:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.rabTempSredi}" id="rabTempSredi" name="rabTempSredi">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rascTemp">Расчетная тем-ра, °С:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.rascTemp}" id="rascTemp" name="rascTemp">
+                                </div>
+                            </div>
+                            <!--                    <div class="form-group mt-3">-->
+                            <!--                        <label class="control-label " for="lname">Расч. тем-ра Корпуса,°С:</label>-->
+                            <!--                        <div class="col-sm-10">-->
+                            <!--                            <input type="text" class="form-control" th:field="${avo.type}" id="lname" name="godVipuska">-->
+                            <!--                        </div>-->
+                            <!--                    </div>-->
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="godVipuska">Год выпуска :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.godVipuska}" id="godVipuska" name="godVipuska">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="dataVvoda">Дата ввода в эксплуатацию :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.dataVvoda}" id="dataVvoda" name="dataVvoda">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rascSrok">Расчетный срок службы :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.rascSrok}" id="rascSrok" name="rascSrok">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tipLopastey">Тип лопастей :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.tipLopastey}" id="tipLopastey" name="tipLopastey">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="diametrKolesa">Диаметр колеса вентилятора, м :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.diametrKolesa}" id="diametrKolesa" name="diametrKolesa">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="markaTrubi">Марка материала Трубы :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.markaTrubi}" id="markaTrubi" name="markaTrubi">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="izgotov">Изготовитель :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.izgotov}" id="izgotov" name="izgotov">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tipDvig">Тип Двигателя :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.tipDvig}" id="tipDvig" name="tipDvig">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="markDvig">Марка Двигателя :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.markDvig}" id="markDvig" name="markDvig">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="mownostDvig">Мощность Двигателя N, кВт :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.mownostDvig}" id="mownostDvig" name="mownostDvig">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="castotaVraw">Частота вращения Двигателя, об/мин :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${avo.castotaVraw}" id="castotaVraw" name="castotaVraw">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group pb-3">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-info text-white mt-3"
+                                th:text="${avo.id == null}? 'Добавить' : 'Обновить'">...
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+
+</div>
+
+
+
+</body>
+
+</html>
+
+

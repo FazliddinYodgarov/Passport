@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/tableList.css}" href="../../../static/css/tableList.css">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/all.css}" href="../../../static/css/all.css">
+
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <div class="tabcontent ">
+        <div class=" " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title  fw-bold" style="margin-left: 36%; color: #2196f3" id="staticBackdropLabel">Информация об оборудовании</h5>
+                    </div>
+                    <div class="modal-body ">
+                        <table class="table table-bordered text-center">
+                            <tbody class="">
+                            <tr>
+                                <th scope="row" class="m-0">Завод</th>
+                                <td th:text="${avo.factory.factoryName}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Цех</th>
+                                <td th:text="${avo.department}"></td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">Установка</th>
+                                <td th:text="${avo.plant}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Блок</th>
+                                <td th:text="${avo.block}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Технологическое место</th>
+                                <td th:text="${avo.technologicalPlace}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Классификация</th>
+                                <td th:text="${avo.clacification}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Наименование оборудования</th>
+                                <td th:text="${avo.equipmentIdentification}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Заводской номер</th>
+                                <td th:text="${avo.serialNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Регистрационный номер</th>
+                                <td th:text="${avo.registrationNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Инвентаризационный номер</th>
+                                <td th:text="${avo.inventoryNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип</th>
+                                <td th:text="${avo.type}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Условное обозначение (шифр)</th>
+                                <td th:text="${avo.wifr}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Число ходов</th>
+                                <td th:text="${avo.cisloXodov}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Количество секций</th>
+                                <td th:text="${avo.kolVoSeksiy}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Поверхность теплообмена, м2</th>
+                                <td th:text="${avo.poverTeplo}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Рабочее давление Pраб, кгс/см2</th>
+                                <td th:text="${avo.rabDavlenie}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расчетное давление Pраб, кгс/см2</th>
+                                <td th:text="${avo.rascDavlenie}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Раб. тем-ра, °С</th>
+                                <td th:text="${avo.rabTempSredi}"></td>
+                            </tr>
+<!--                            <tr>-->
+<!--                                <th scope="row">Расч. тем-ра, °С</th>-->
+<!--                                <td th:text="${avo.rascTemp}"></td>-->
+<!--                            </tr>-->
+                            <tr>
+                                <th scope="row">Год выпуска</th>
+                                <td th:text="${avo.godVipuska}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Дата ввода в эксплуатацию</th>
+                                <td th:text="${avo.dataVvoda}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расчетный срок службы</th>
+                                <td th:text="${avo.rascSrok}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип лопастей</th>
+                                <td th:text="${avo.tipLopastey}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Диаметр колеса вентилятора, м</th>
+                                <td th:text="${avo.diametrKolesa}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Марка материала Трубы</th>
+                                <td th:text="${avo.markaTrubi}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Изготовитель</th>
+                                <td th:text="${avo.izgotov}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип Двигателя</th>
+                                <td th:text="${avo.tipDvig}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Марка Двигателя</th>
+                                <td th:text="${avo.markDvig}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Мощность Двигателя N, кВт</th>
+                                <td th:text="${avo.mownostDvig}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Частота вращения Двигателя, об/мин</th>
+                                <td th:text="${avo.castotaVraw}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="modal-footer px-2">
+                            <button type="button" class="btn btn-info text-white text-uppercase ">
+                                <a class="text-decoration-none text-white" th:href="${'/equipment/go-to-update/avo/' + {avo.id} + '/'}"><i
+                                        class="fa-solid fa-pen-to-square"></i> Изменить</a>
+                            </button>
+                            <button sec:authorize="hasRole('ROLE_ADMIN')" type="button" class="btn btn-danger text-uppercase ">
+                                <a class="text-decoration-none text-white" th:href="@{/equipment/delete/avo/{avoId}(avoId=${avo.id})}"><i
+                                        class="fa-solid fa-trash"></i> Удалить </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="../../../static/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
+
+

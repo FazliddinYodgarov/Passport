@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/tableList.css}" href="../../../static/css/tableList.css">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/all.css}" href="../../../static/css/all.css">
+
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <div class="tabcontent ">
+        <div class=" " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" style="margin-left: 36%" id="staticBackdropLabel">Ускуна
+                            малумотлари</h5>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered text-center">
+                            <tbody>
+                            <tr>
+                                <th scope="row" class="m-0">Завод</th>
+                                <td th:text="${columns.factory.factoryName}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Цех</th>
+                                <td th:text="${columns.department}"></td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">Установка</th>
+                                <td th:text="${columns.plant}"></td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">Блок</th>
+                                <td th:text="${columns.block}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Технологическое место</th>
+                                <td th:text="${columns.technologicalPlace}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Классификация</th>
+                                <td th:text="${columns.clacification}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Наименование оборудования</th>
+                                <td th:text="${columns.equipmentIdentification}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Заводской номер</th>
+                                <td th:text="${columns.serialNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Регистрационный номер</th>
+                                <td th:text="${columns.registrationNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Инвентаризационный номер</th>
+                                <td th:text="${columns.inventoryNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип</th>
+                                <td th:text="${columns.type}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Объем, м3</th>
+                                <td th:text="${columns.obyem}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Диаметр корпуса внутренний (нижняя часть) Dвнутр, мм</th>
+                                <td th:text="${columns.diamKorpusaVn}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Диаметр корпуса внутренний (верхняя часть) Dвнутр, мм</th>
+                                <td th:text="${columns.diamKorpusaVn2}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Толщина стенки корпуса S1, мм</th>
+                                <td th:text="${columns.tolwinaSt1}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Толщина стенки корпуса S2, мм</th>
+                                <td th:text="${columns.tolwinaSt2}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Высота, мм</th>
+                                <td th:text="${columns.visota}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип внутренного устройства</th>
+                                <td th:text="${columns.tipUstroystva}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Рабочее давление Pраб, кгс/см2</th>
+                                <td th:text="${columns.rabDavlenie}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расчетное давление Pрас, кгс/см2</th>
+                                <td th:text="${columns.rascDavlenie}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Рабочая тем-ра среды (макс), °С</th>
+                                <td th:text="${columns.rabTemp}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расч. температура, °C</th>
+                                <td th:text="${columns.rascTemp}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Наименование среды</th>
+                                <td th:text="${columns.naimSredi}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Масса аппарата, кг</th>
+                                <td th:text="${columns.massaApp}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Год выпуска</th>
+                                <td th:text="${columns.godVipuska}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Дата ввода в эксплуатацию</th>
+                                <td th:text="${columns.dataVvoda}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расчетный срок службы</th>
+                                <td th:text="${columns.rascSrok}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Марка Материала Корпуса</th>
+                                <td th:text="${columns.markaKorp}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Марка Материала Внутреннего устройства</th>
+                                <td th:text="${columns.markaVnUst}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Дефлегматор</th>
+                                <td th:text="${columns.deflegmator}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Толщина стенки труб Sтр, мм</th>
+                                <td th:text="${columns.tolwinaDefl}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Количество Труб</th>
+                                <td th:text="${columns.kolVoTrub}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Поверхность теплообмена, м2</th>
+                                <td th:text="${columns.poverTeploob}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Рабочее давление Pраб, кгс/см2 2</th>
+                                <td th:text="${columns.rabDavlenie1}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расчетное давление Pрас, кгс/см2 3</th>
+                                <td th:text="${columns.rabDavlenie1}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Рабочая тем-ра среды (макс), °С 4</th>
+                                <td th:text="${columns.rabTemp1}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">createddate</th>
+                                <td th:text="${columns.createdDate}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расчетная тем-ра, °С 5</th>
+                                <td th:text="${columns.rascTemp2}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Марка материала Дефлегматора</th>
+                                <td th:text="${columns.markaDef}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Изготовитель</th>
+                                <td th:text="${columns.izgotov}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Дата проведения технического осмотра</th>
+                                <td th:text="${columns.dataProvTexOsmotra}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Дата проведения последних испытаний</th>
+                                <td th:text="${columns.poslisp}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Дата следующего технического осмотра</th>
+                                <td th:text="${columns.texOsmotr}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Дата проведения следующих испытаний</th>
+                                <td th:text="${columns.sledisp}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="modal-footer px-2">
+                            <button type="button" class="btn btn-info text-white text-uppercase   ">
+                                <a class="text-decoration-none text-white" th:href="${'/equipment/go-to-update/columns/' + {columns.id} + '/'}"><i
+                                        class="fa-solid fa-pen-to-square "></i> Изменить</a>
+                            </button>
+                            <button sec:authorize="hasRole('ROLE_ADMIN')" type="button" class="btn btn-danger text-uppercase  ">
+                                <a class="text-decoration-none text-white" th:href="@{/equipment/delete/columns/{columnsId}(columnsId=${columns.id})}"><i
+                                        class="fa-solid fa-trash "></i> Удалить </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="../../../static/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
+
+

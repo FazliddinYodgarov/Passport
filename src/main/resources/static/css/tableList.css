@@ -1,0 +1,21 @@
+.tabcontent {
+    /* width */
+    /* Track */
+    /* Handle */
+    /* Handle on hover */ }
+.tabcontent .modal-content {
+    width: 220%;
+    margin-left: 0;
+    margin-top: 100px;
+}
+.tabcontent .modal-content th {
+    width: 60px; }
+.tabcontent .modal-dialog {
+    margin-left: 300px; }
+.tabcontent .table{
+    text-align: center;
+}
+.tabcontent h5{
+ color: #2196f3!important;
+    font-weight: bold!important;
+}

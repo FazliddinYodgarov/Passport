@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS --><!----css3---->
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS --><!----css3---->
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+</head>
+
+
+<!--google material icon-->
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet">
+</head>
+<body>
+
+<!--Main Navigation-->
+<header th:fragment="header">
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3><img th:src="@{/img/LOGO2.png}" src="../../static/img/LOGO2.png" style="width: 60px"
+                     class="img-fluid"/><span style="color: #f48323">UZBEKNEFTEGAZ</span></h3>
+        </div>
+        <ul class="list-unstyled components" id="myDIV">
+            <li class=" ung "
+                th:classappend="${#httpServletRequest.requestURI.startsWith('/equipment/') ? 'active':''}">
+                <a href="#" th:href="@{/equipment/}"
+                >
+
+                    <i class="material-icons ">construction</i><span>Оборудование</span></a>
+            </li>
+
+
+            <li class="ung" sec:authorize="hasRole('ROLE_ADMIN')" th:classappend="${#httpServletRequest.requestURI.startsWith('/factory/') ? 'active':''}">
+                <a href="#" th:href="@{/factory/}"
+                >
+                    <i class="material-icons ">factory</i><span>Factory</span></a>
+            </li>
+
+            <li class="ung" sec:authorize="hasRole('ROLE_ADMIN')" th:classappend="${#httpServletRequest.requestURI.startsWith('/profile/') ? 'active':''}">
+                <a href="#" th:href="@{/profile/}">
+                    <i class="material-icons ">person</i><span>Profile</span>
+                </a>
+            </li>
+
+        </ul>
+
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <div class="top-navbar  " style="position: sticky">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+
+
+                    <a class="navbar-brand" href="https://www.ung.uz/"> UZBEKNEFTEGAZ </a>
+
+                    <button class="d-inline-block d-lg-none ml-auto more-button" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="material-icons">more_vert</span>
+                    </button>
+
+                    <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none justify-content-end"
+                         id="navbarSupportedContent">
+                        <ul class="nav navbar-nav  mr-auto ">
+                            <li class="nav-item">
+                                <button type="button">
+
+                                    <a class="nav-link" href="#" th:href="@{/logout}">
+                                        <span class="material-icons ">logout</span>
+                                    </a>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main style="margin-top: 58px;">
+    <h1>Author</h1>
+</main>
+<!--Main layout-->
+
+<script src="../../static/js/equip.js" th:src="@{/js/equip.js}"></script>
+
+</body>
+</html>
+

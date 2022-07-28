@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <main style="margin-top: 80px; margin-left: 300px">
+
+        <div th:fragment="pump">
+            <form class="form  " action="#"
+                  th:action=" ${pump.id == null} ? @{/equipment/create/pump} : @{/equipment/update/pump/{pumpId}(pumpId=${pump.id})}"
+                  th:object="${pump}" method="post">
+
+                <div class="form-floating fs-6 fw-bold  d-flex">
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group  mt-3 text-dark fw-bold">
+                                <label class="control-label col-sm-2" for="factory">Завод:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-select" id="factory" th:field="${pump.factoryId}">
+                                        <th:block th:each="factory : ${factoryList}">
+                                            <option th:value="${factory.id}" th:text="${factory.factoryName}"
+                                                    th:selected="${pump.factoryId==factory.id}"></option>
+                                        </th:block>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label col-sm-2" for="department">Цех:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.department}" id="department"
+                                           name="department">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label" for="plant">Установка</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.plant}" id="plant" name="plant">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="block">Блок:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.block}" id="block" name="block">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="technologicalPlace">Технологическое место :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.technologicalPlace}"
+                                           id="technologicalPlace" name="technologicalPlace">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="clacification">Классификация :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.clacification}"
+                                           id="clacification"
+                                           name="clacification">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="equipmentIdentification">Наименование оборудования :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.equipmentIdentification}"
+                                           id="equipmentIdentification" name="equipmentIdentification">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="serialNomer">Заводской номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.serialNomer}" id="serialNomer"
+                                           name="serialNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="registrationNomer">Регистрационный номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.registrationNomer}"
+                                           id="registrationNomer" name="registrationNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="inventoryNomer">Инвентаризационный номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.inventoryNomer}"
+                                           id="inventoryNomer" name="inventoryNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="type">Тип :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.type}" id="type" name="type">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rasxod">Расход Q, м3/мин :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.rasxod}" id="rasxod" name="rasxod">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="davlenie">Давление Рк, кгс/см2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.davlenie}" id="davlenie" name="davlenie">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="castotaVraweniya">Частота вращения, об/мин :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.castotaVraweniya}" id="castotaVraweniya" name="castotaVraweniya">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rabSreda">Рабочая среда :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.rabSreda}" id="rabSreda" name="rabSreda">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rabTemperatura">Раб. Температура, °С :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.rabTemperatura}" id="rabTemperatura" name="rabTemperatura">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="mownostNasosa">Мощность насоса :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.mownostNasosa}" id="mownostNasosa" name="mownostNasosa">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="mownostEldvigatelya">Мощность Эл.двигателя, кВТ :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.mownostEldvigatelya}" id="mownostEldvigatelya" name="mownostEldvigatelya">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contact-form">
+
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rascSrokSlujbi">Расчетный срок службы :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.rascSrokSlujbi}"  id="rascSrokSlujbi" name="rascSrokSlujbi">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tipUplotnenia">Тип Уплотнения :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.tipUplotnenia}" id="tipUplotnenia" name="tipUplotnenia">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="modelUplotnenia">Модель Уплотнения :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.modelUplotnenia}" id="modelUplotnenia" name="modelUplotnenia">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="izgotovitelUplotnenia">Изготовитель Уплотнения :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.izgotovitelUplotnenia}" id="izgotovitelUplotnenia" name="izgotovitelUplotnenia">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="davlenieNaVxode">Давление на входе Рвх, кгс/см2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.davlenieNaVxode}" id="davlenieNaVxode" name="davlenieNaVxode">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="davlenieNaVixode">Давление на выходе Рвых, кгс/см2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.davlenieNaVixode}" id="davlenieNaVixode" name="davlenieNaVixode">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tipReduktora">Тип редуктора (передачи) :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.tipReduktora}"  id="tipReduktora" name="tipReduktora">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="model2">Модель2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.model2}" id="model2" name="model2">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="zavodskoyNomer3">Заводской номер3 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.zavodskoyNomer3}" id="zavodskoyNomer3" name="zavodskoyNomer3">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="regNomer4">Регистрационный номер4 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.regNomer4}" id="regNomer4" name="regNomer4">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="cisloPeredac">Число передач :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.cisloPeredac}" id="cisloPeredac" name="cisloPeredac">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="izgotovitelReduktora">Изготовитель редуктора :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.izgotovitelReduktora}" id="izgotovitelReduktora" name="izgotovitelReduktora">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="izgotovitel">Изготовитель :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.izgotovitel}" id="izgotovitel" name="izgotovitel">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="godvipuska">Год выпуска :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.godvipuska}" id="godvipuska" name="godvipuska">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tipPodwipnikov">Тип подшипников :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.tipPodwipnikov}" id="tipPodwipnikov" name="tipPodwipnikov">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="markaMasla">Марка масла :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.markaMasla}" id="markaMasla" name="markaMasla">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="obyem">Объем, м3/литр :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${pump.obyem}" id="obyem" name="obyem">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group pb-3">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-info text-white mt-3"
+                                th:text="${pump.id == null}? 'Добавить' : 'Обновить'">...
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+
+</div>
+
+
+
+</body>
+
+</html>
+
+

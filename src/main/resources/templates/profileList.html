@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css">
+    <link rel="stylesheet" href="../static/css/admin-style.css" th:href="@{/css/admin-style.css}">
+    <link rel="stylesheet" href="../static/css/general-style.css" th:href="@{/css/general-style.css}"><!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}"  href="../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+</head>
+
+
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+    <main class="m-lg-5" style="margin-top: 58px;">
+        <div class="p-2 ">
+            <div class="main-block">
+                <h1 class="text-center">Profile List</h1>
+            </div>
+            <br>
+            <div class="main-block">
+                <div class="col-lg-12 d-flex justify-content-end pb-3">
+                    <p>
+                        <a class="btn btn-success" th:href="@{/profile/add_profile}">Add Profile</a>
+                    </p>
+                </div>
+                <div class="col-lg-12">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>"№"</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Username</th>
+                            <th>Contact</th>
+                            <th>Factory</th>
+                            <th style="width: 50px">Update</th>
+                            <th style="width: 50px">Delete</th>
+                        </tr>
+                        </thead>
+                        <tr th:each="profile, iStat : ${profileList}"
+                            th:style="${iStat.odd}? 'font-weight: bold;'"
+                            th:alt-title="${iStat.even}? 'even' : 'odd'">
+                            <td th:text="${iStat.index} + 1" scope="row"></td>
+                            <td th:text="${profile.name}"/>
+                            <td th:text="${profile.surname}"/>
+                            <td th:text="${profile.username}"/>
+                            <td th:text="${profile.phone}"/>
+                            <td th:text="${profile.factory.factoryName}"/>
+                            <td>
+                                <a th:href="@{/profile/go-to-update/{profileId}(profileId=${profile.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                            <td>
+                                <a th:href="@{/profile/delete/{profileId}(profileId=${profile.id})}"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/tableList.css}" href="../../../static/css/tableList.css">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/all.css}" href="../../../static/css/all.css">
+
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="fragments/admin-fragments :: header"></div>
+    <div class="tabcontent">
+        <div class=" " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" style="margin-left: 36%" id="staticBackdropLabel">Информация об оборудовании</h5>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered text-center">
+                            <tbody>
+                            <tr>
+                                <th scope="row" class="m-0">Завод</th>
+                                <td th:text="${exchanger.factory.factoryName}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Цех</th>
+                                <td th:text="${exchanger.department}"></td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">Установка</th>
+                                <td th:text="${exchanger.plant}" colspan="1"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Блок</th>
+                                <td th:text="${exchanger.block}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Технологическое место</th>
+                                <td th:text="${exchanger.technologicalPlace}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Классификация</th>
+                                <td th:text="${exchanger.clacification}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Наименование оборудования</th>
+                                <td th:text="${exchanger.equipmentIdentification}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Заводской номер</th>
+                                <td th:text="${exchanger.serialNomer}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Регистрационный номер</th>
+                                <td th:text="${exchanger.registrationNomer}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Инвентаризационный номер</th>
+                                <td th:text="${exchanger.inventoryNomer}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип</th>
+                                <td th:text="${exchanger.type}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Условное обозначение (шифр)
+                                </th>
+                                <td th:text="${exchanger.wifr}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">"Внутренний диаметр Корпуса Dвнутр, мм"</th>
+                                <td th:text="${exchanger.vnDiametrKorpusa}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Длина Корпуса, мм</th>
+                                <td th:text="${exchanger.dlinaKorp}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">"Толщина стенки корпуса Sк, мм"</th>
+                                <td th:text="${exchanger.tolwinaKorp}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">"Наружный диаметр Труб Dнаруж, мм"</th>
+                                <td th:text="${exchanger.narDiametr}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">"Длина труб L, мм"</th>
+                                <td th:text="${exchanger.dlinaTrub}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Толщина стенки труб Sтр, мм</th>
+                                <td th:text="${exchanger.tolwinaStenki}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Количество Труб</th>
+                                <td th:text="${exchanger.kolVoTrub}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Число ходов</th>
+                                <td th:text="${exchanger.cisloXodov}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Поверхность теплообмена, м2</th>
+                                <td th:text="${exchanger.povTeploob}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Рабочее давление Трубное Pраб, кгс/см2</th>
+                                <td th:text="${exchanger.rabDavlenieTr}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Рабочее давление Межтрубное Pраб, кгс/см2</th>
+                                <td th:text="${exchanger.rabDavlMejTr}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расчетное давление Трубное Pраб, кгс/см2</th>
+                                <td th:text="${exchanger.rascDavlenieTr}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расчетное давление Межтрубное Pраб, кгс/см2</th>
+                                <td th:text="${exchanger.rascDavlMejTr}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Раб. тем-ра среды, °С Трубная</th>
+                                <td th:text="${exchanger.rabTempSrediTr}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Раб. тем-ра среды, °С Межтрубная</th>
+                                <td th:text="${exchanger.rabTempMejTr}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расч. тем-ра, °С Трубная</th>
+                                <td th:text="${exchanger.rascTempSrediTr}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расч. тем-ра, °С Межтрубная</th>
+                                <td th:text="${exchanger.rascTempMejTr}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Наименование среды Трубное</th>
+                                <td th:text="${exchanger.naimSrediTr}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Наименование среды Межтрубное</th>
+                                <td th:text="${exchanger.naimSrediMejTr}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Год выпуска</th>
+                                <td th:text="${exchanger.godVipuska}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Дата ввода в эксплуатацию</th>
+                                <td th:text="${exchanger.dataVvoda}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расчетный срок службы</th>
+                                <td th:text="${exchanger.rascSrokSlujbi}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Материал Корпуса</th>
+                                <td th:text="${exchanger.materialKorp}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Материал Труб</th>
+                                <td th:text="${exchanger.materialTrub}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Масса, кг</th>
+                                <td th:text="${exchanger.massa}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Изготовитель</th>
+                                <td th:text="${exchanger.izgotovitel}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Дата проведения технического осмотра</th>
+                                <td th:text="${exchanger.dataProvTexOsmotra}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Дата проведения последних испытаний</th>
+                                <td th:text="${exchanger.poslIsp}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Дата следующего технического осмотра</th>
+                                <td th:text="${exchanger.texOsmotr}" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Дата проведения следующих испытаний</th>
+                                <td th:text="${exchanger.sledIsp}" colspan="2"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer px-2">
+                        <button type="button" class="btn btn-info text-white text-uppercase ">
+                            <a class="text-decoration-none text-white" th:href="${'/equipment/go-to-update/' + {exchanger.id} + '/'}"><i
+                                    class="fa-solid fa-pen-to-square"></i> Изменить</a>
+                        </button>
+                        <button sec:authorize="hasRole('ROLE_ADMIN')" type="button" class="btn btn-danger text-uppercase ">
+                            <a class="text-decoration-none text-white" th:href="@{/equipment/delete/{exchangerId}(exchangerId=${exchanger.id})}"><i
+                                    class="fa-solid fa-trash"></i> Удалить </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="../../../static/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
+
+

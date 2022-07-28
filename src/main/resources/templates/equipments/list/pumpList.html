@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/tableList.css}" href="../../../static/css/tableList.css">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/all.css}" href="../../../static/css/all.css">
+
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <div class="tabcontent ">
+        <div class=" " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" style="margin-left: 36%" id="staticBackdropLabel">Информация об оборудовании</h5>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th scope="row" class="m-0">Завод</th>
+                                <td th:text="${pump.factory.factoryName}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Цех</th>
+                                <td th:text="${pump.department}"></td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">Установка</th>
+                                <td th:text="${pump.plant}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Блок</th>
+                                <td th:text="${pump.block}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Технологическое место</th>
+                                <td th:text="${pump.technologicalPlace}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Классификация</th>
+                                <td th:text="${pump.clacification}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Наименование оборудования</th>
+                                <td th:text="${pump.equipmentIdentification}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Заводской номер</th>
+                                <td th:text="${pump.serialNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Регистрационный номер</th>
+                                <td th:text="${pump.registrationNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Инвентаризационный номер</th>
+                                <td th:text="${pump.inventoryNomer}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип</th>
+                                <td th:text="${pump.type}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расход Q, м3/мин</th>
+                                <td th:text="${pump.rasxod}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Давление Рк, кгс/см2</th>
+                                <td th:text="${pump.davlenie}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Частота вращения, об/мин</th>
+                                <td th:text="${pump.castotaVraweniya}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Рабочая среда</th>
+                                <td th:text="${pump.rabSreda}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Раб. Температура, °С</th>
+                                <td th:text="${pump.rabTemperatura}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Мощность насоса</th>
+                                <td th:text="${pump.mownostNasosa}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Мощность Эл.двигателя, кВТ</th>
+                                <td th:text="${pump.mownostEldvigatelya}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Расчетный срок службы</th>
+                                <td th:text="${pump.rascSrokSlujbi}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип Уплотнения</th>
+                                <td th:text="${pump.tipUplotnenia}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Модель Уплотнения</th>
+                                <td th:text="${pump.modelUplotnenia}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Изготовитель Уплотнения</th>
+                                <td th:text="${pump.izgotovitelUplotnenia}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Давление на входе Рвх, кгс/см2</th>
+                                <td th:text="${pump.davlenieNaVxode}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Давление на выходе Рвых, кгс/см2</th>
+                                <td th:text="${pump.davlenieNaVixode}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип редуктора (передачи)</th>
+                                <td th:text="${pump.tipReduktora}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Модель2</th>
+                                <td th:text="${pump.model2}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Заводской номер3</th>
+                                <td th:text="${pump.zavodskoyNomer3}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Регистрационный номер4</th>
+                                <td th:text="${pump.regNomer4}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Число передач</th>
+                                <td th:text="${pump.cisloPeredac}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Изготовитель редуктора</th>
+                                <td th:text="${pump.izgotovitelReduktora}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Изготовитель</th>
+                                <td th:text="${pump.izgotovitel}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Год выпуска</th>
+                                <td th:text="${pump.godvipuska}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип подшипников</th>
+                                <td th:text="${pump.tipPodwipnikov}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Марка масла</th>
+                                <td th:text="${pump.markaMasla}"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">>Объем, м3/литр</th>
+                                <td th:text="${pump.obyem}"></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <div class="modal-footer px-2">
+                            <button type="button" class="btn btn-info text-white text-uppercase ">
+                                <a class="text-decoration-none text-white"
+                                   th:href="${'/equipment/go-to-update/pump/' + {pump.id} + '/'}"><i
+                                        class="fa-solid fa-pen-to-square"></i> Изменить</a>
+                            </button>
+                            <button sec:authorize="hasRole('ROLE_ADMIN')" type="button" class="btn btn-danger text-uppercase ">
+                                <a class="text-decoration-none text-white"
+                                   th:href="@{/equipment/delete/pump/{pumpId}(pumpId=${pump.id})}"><i
+                                        class="fa-solid fa-trash"></i> Удалить </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="../../../static/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
+
+

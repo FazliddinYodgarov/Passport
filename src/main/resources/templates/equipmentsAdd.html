@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../static/css/eeq.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<body>
+
+
+<div class="wrapper">
+
+
+    <!-- Sidebar  -->
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <main style="margin-top: 80px; margin-left: 300px">
+        <div class="col-md-3">
+            <div class="form-floating">
+                <select class="form-select" id="myselection">
+                    <option value="One"> Сепаратор и емкость</option>
+                    <option value="Two">Теплообменник</option>
+                    <option value="Three">Резервуар</option>
+                    <option value="Four">АВО</option>
+                    <option value="Five">Колонна</option>
+                    <option value="Sex">ГПА</option>
+                    <option value="Seven">Насос</option>
+                    <option value="Eight">Компрессор</option>
+                    <option value="Nine">Воздушный компрессор</option>
+                    <option value="Ten">Трубопровод</option>
+                    <option value="Eleven">Факел</option>
+                    <option value="Twelve">Котел</option>
+                </select>
+
+
+            </div>
+        </div>
+
+
+        <div id="showOne" class="myDiv">
+            <div th:replace="equipments/separator :: separator"></div>
+        </div>
+        <div id="showTwo" class="myDiv">
+            <div th:replace="equipments/exchanger :: exchanger"></div>
+        </div>
+        <div id="showThree" class="myDiv">
+            <div th:replace="equipments/reservoir :: reservoir"></div>
+
+        </div>
+        <div id="showFour" class="myDiv">
+            <div th:replace="equipments/AVO :: AVO"></div>
+        </div>
+
+        <div id="showFive" class="myDiv">
+            <div th:replace="equipments/columns :: columns"></div>
+        </div>
+        <div id="showSex" class="myDiv">
+            <div th:replace="equipments/GPA :: GPA"></div>
+        </div>
+        <div id="showSeven" class="myDiv">
+            <div th:replace="equipments/pump :: pump"></div>
+        </div>
+
+        <div id="showEight" class="myDiv">
+            <div th:replace="equipments/compressor :: compressor"></div>
+        </div>
+        <div id="showNine" class="myDiv">
+            <div th:replace="equipments/air_compressor :: air_compressor"></div>
+        </div>
+        <div id="showTen" class="myDiv">
+            <div th:replace="equipments/pipeline :: pipeline"></div>
+
+        </div>
+        <div id="showEleven" class="myDiv">
+            <div th:replace="equipments/torch :: torch"></div>
+        </div>
+
+        <div id="showTwelve" class="myDiv">
+            <div th:replace="equipments/boiler :: boiler"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+    </main>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="../static/js/equip.js" th:src="@{/js/equip.js}"></script>
+
+
+</body>
+
+</html>
+
+

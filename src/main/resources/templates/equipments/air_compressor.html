@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <!----css3---->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/eeq.css}" href="../../static/css/eeq.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+
+    <div th:replace="fragments/admin-fragments :: header"></div>
+
+
+    <main style="margin-top: 80px; margin-left: 300px">
+
+        <div th:fragment="air_compressor">
+            <form class="form  " action="#"
+                  th:action=" ${aircompressor.id == null} ? @{/equipment/create/aircompressor} : @{/equipment/update/aircompressor/{aircompressorId}(aircompressorId=${aircompressor.id})}"
+                  th:object="${aircompressor}" method="post">
+
+                <div class="form-floating fs-6 fw-bold  d-flex">
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group  mt-3 text-dark fw-bold">
+                                <label class="control-label col-sm-2" for="factory">Завод:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-select" id="factory" th:field="${aircompressor.factoryId}">
+                                        <th:block th:each="factory : ${factoryList}">
+                                            <option th:value="${factory.id}" th:text="${factory.factoryName}"
+                                                    th:selected="${aircompressor.factoryId==factory.id}"></option>
+                                        </th:block>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label col-sm-2"  for="department">Цех:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.department}" id="department" name="department">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label"  for="plant">Установка</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.plant}" id="plant" name="plant">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="block">Блок:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.block}" id="block" name="block">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label "  for="technologicalPlace">Технологическое место :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.technologicalPlace}" id="technologicalPlace" name="technologicalPlace">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="clacification">Классификация :</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-select"
+                                    id="equipment">
+                                    <th:block th:each="eqType : ${equipmentTypeList}">
+                                        <option th:value="${eqType.}" th:text="${eqType.name}"
+                                                th:selected="${filterDTO.equipmentType==eqType}"></option>
+                                    </th:block>
+                                    </select>
+                                    <input type="text" class="form-control" th:field="${aircompressor.clacification}" id="clacification" name="clacification">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control->label " for="equipmentIdentification">Наименование оборудования :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.equipmentIdentification}" id="equipmentIdentification" name="equipmentIdentification">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label "  for="serialNomer">Заводской номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.serialNomer}" id="serialNomer" name="serialNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="registrationNomer">Регистрационный номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.registrationNomer}" id="registrationNomer" name="registrationNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="inventoryNomer">Инвентаризационный номер :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.inventoryNomer}" id="inventoryNomer" name="inventoryNomer">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="type">Тип :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.type}" id="type" name="type">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="proizvoditelnost">Производительность Q, м3/мин :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.proizvoditelnost}" id="proizvoditelnost" name="proizvoditelnost">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rabSreda">Рабочая среда :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.rabSreda}" id="rabSreda" name="rabSreda">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="castotaVraw">Частота вращения, об/мин :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.castotaVraw}" id="castotaVraw" name="castotaVraw">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="davlNaVxode">Давление на входе Рвх, кгс/см2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.davlNaVxode}" id="davlNaVxode" name="davlNaVxode">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="davlNaVixode">Давление на выходе Рвых, кгс/см2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.davlNaVixode}" id="davlNaVixode" name="davlNaVixode">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rabTempNaVxode">Раб. Температура на входе, °С :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.rabTempNaVxode}" id="rabTempNaVxode" name="rabTempNaVxode">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rabTempNaVixode">Раб. Температура на выходе, °С :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.rabTempNaVixode}" id="rabTempNaVixode" name="rabTempNaVixode">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="izgotovitel">Изготовитель :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.izgotovitel}" id="izgotovitel" name="izgotovitel">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="godVipuska">Год выпуска :</label>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control" th:field="${aircompressor.proizvoditelnost}" id="godVipuska" name="godVipuska">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="dataVvoda">Дата ввода в эксплуатацию :</label>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control" th:field="${aircompressor.dataVvoda}" id="dataVvoda" name="dataVvoda">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="rascSrok">Расчетный срок службы :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.rascSrok}" id="rascSrok" name="rascSrok">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tipUplot">Тип Уплотнения :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.tipUplot}" id="tipUplot" name="tipUplot">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="modelUplot">Модель Уплотнения :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.modelUplot}" id="modelUplot" name="modelUplot">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="izgotovitelUplot">Изготовитель Уплотнения :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.izgotovitelUplot}" id="izgotovitelUplot" name="izgotovitelUplot">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tipReduktora">Тип редуктора (передачи) :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.tipReduktora}" id="tipReduktora" name="tipReduktora">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="modelReduktora">Модель редуктора :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.modelReduktora}" id="modelReduktora" name="modelReduktora">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="zavodskoyNomer2">Заводской номер2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.zavodskoyNomer2}" id="zavodskoyNomer2" name="zavodskoyNomer2">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="regNomer2">Регистрационный номер2 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.regNomer2}" id="regNomer2" name="regNomer2">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="kolVo">Количество :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.kolVo}" id="kolVo" name="kolVo">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="castotaVrawenia">Частота вращения, об/мин4 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.castotaVrawenia}" id="castotaVrawenia" name="castotaVrawenia">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="cisloPeredac">Число передач :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.cisloPeredac}" id="cisloPeredac" name="cisloPeredac">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="izgotovitelReduktora">Изготовитель редуктора :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.izgotovitelReduktora}" id="izgotovitelReduktora" name="izgotovitelReduktora">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="godVipuskaReduk">Год выпуска5 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.godVipuskaReduk}" id="godVipuskaReduk" name="godVipuskaReduk">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tipPodwip">Тип подшипников :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.tipPodwip}" id="tipPodwip" name="tipPodwip">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="naimTurbini">Наименование Турбины :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.naimTurbini}" id="naimTurbini" name="naimTurbini">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="modelTurbini">Модель Турбины :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.modelTurbini}" id="modelTurbini" name="modelTurbini">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="zavodskoyNomer6">Заводской номер6 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.zavodskoyNomer6}" id="zavodskoyNomer6" name="zavodskoyNomer6">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="regNomer7">Регистрационный номер7 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.regNomer7}" id="regNomer7" name="regNomer7">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="castVraweniaTurb">Частота вращения, об/мин8 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.castVraweniaTurb}" id="castVraweniaTurb" name="castVraweniaTurb">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="mownost">Мощность, кВт :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.mownost}" id="mownost" name="mownost">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="tipPodwipnikov9">Тип подшипников9 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.tipPodwipnikov9}" id="tipPodwipnikov9" name="tipPodwipnikov9">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="izgotovitelTurbini">Изготовитель Турбины :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.izgotovitelTurbini}" id="izgotovitelTurbini" name="izgotovitelTurbini">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="godVipuska10">Год выпуска10 :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.godVipuska10}" id="godVipuska10" name="godVipuska10">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="markaMasla">Марка масла :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.markaMasla}" id="markaMasla" name="markaMasla">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="control-label " for="obyem">Объем, м3/литр :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="${aircompressor.obyem}" id="obyem" name="obyem">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group pb-3">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-info text-white mt-3"
+                                th:text="${aircompressor.id == null}? 'Добавить' : 'Обновить'">...
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+
+</div>
+
+
+</body>
+
+</html>
+
+
